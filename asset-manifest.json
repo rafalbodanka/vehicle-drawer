@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/vehicle-drawer/static/css/main.47d1b00e.css",
+    "main.js": "/vehicle-drawer/static/js/main.cadf5fd8.js",
+    "index.html": "/vehicle-drawer/index.html",
+    "main.47d1b00e.css.map": "/vehicle-drawer/static/css/main.47d1b00e.css.map",
+    "main.cadf5fd8.js.map": "/vehicle-drawer/static/js/main.cadf5fd8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.47d1b00e.css",
+    "static/js/main.cadf5fd8.js"
+  ]
+}
