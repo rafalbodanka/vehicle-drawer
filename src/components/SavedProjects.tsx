@@ -6,8 +6,17 @@ import { SavedProjectType } from "../utils/Types"
 import { setVehicle } from "../redux/vehicle"
 import { setIsStarterModalOpen, setIsVehicleSet, setTitle } from "../redux/project"
 import { formatDistanceToNow } from "date-fns"
+import train from "../img/train.png"
+import bus from "../img/bus.png"
+import plane from "../img/plane.png"
 
 const SavedProjects = () => {
+    const vehicleImages = {
+      Train: train,
+      Bus: bus,
+      Plane: plane,
+      };
+
     const savedProjects: SavedProjectType[] = useGetSavedProjects()
     const dispatch = useAppDispatch()
     useEffect(() => {
@@ -36,7 +45,10 @@ const SavedProjects = () => {
                         </p>
                         <div className="flex justify-center mt-4">
                           <span className="bw-12 h-12 flex justify-center text-4xl">
-                            <img src={`./img/${savedProject.vehicle.type}.png`} />
+                            <img
+                            alt={savedProject.vehicle.type}
+                            src={vehicleImages[savedProject.vehicle.type as keyof typeof vehicleImages]}
+                            />
                           </span>
                         </div>
                         <span className="bw-12 flex justify-center items-end text-xs mt-4">

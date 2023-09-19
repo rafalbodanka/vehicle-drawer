@@ -5,10 +5,19 @@ import { setVehicleType } from "../redux/vehicle";
 import { setIsChooseVehicleModalOpen, setIsVehicleSet, setTitle } from "../redux/project";
 import { selectProject } from "../redux/project";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import train from "../img/train.png"
+import bus from "../img/bus.png"
+import plane from "../img/plane.png"
 
 const ChooseVehicle = () => {
   const vehicleTypes = ['Train', 'Bus', 'Plane']
   const modalRef = useRef(null);
+
+  const vehicleImages = {
+    Train: train,
+    Bus: bus,
+    Plane: plane,
+  };
 
   const isChooseVehicleModalOpen = useAppSelector(selectProject).isChooseVehicleModalOpen
 
@@ -49,7 +58,8 @@ const ChooseVehicle = () => {
                 >
                   <div>
                     <img
-                    src={`./img/${vehicle}.png`}
+                    alt={vehicle}
+                    src={vehicleImages[vehicle as keyof typeof vehicleImages]}
                     className="max-w-12 max-h-12"
                     ></img>
                     <p className="font-bold text-center text-lg">

@@ -11,8 +11,17 @@ import { resetVehicle, setVehicleType } from "../redux/vehicle"
 import { useAppDispatch, useAppSelector } from "../redux/hooks"
 import { selectProject, setIsChooseVehicleModalOpen, setIsStarterModalOpen, setIsVehicleSet } from "../redux/project"
 import DeleteProject from "./DeleteProject"
+import train from "../img/train.png"
+import bus from "../img/bus.png"
+import plane from "../img/plane.png"
 
 const ChangeVehicle = ({ vehicle }: {vehicle: VehicleType}) => {
+
+    const vehicleImages = {
+        Train: train,
+        Bus: bus,
+        Plane: plane,
+    };
 
     const projectTitle = useAppSelector(selectProject).title
 
@@ -47,7 +56,10 @@ const ChangeVehicle = ({ vehicle }: {vehicle: VehicleType}) => {
     return (
         <div className="flex items-center w-48">
             <button className="flex items-center" onClick={handleClick}>
-                <img src={`./img/${vehicle.type}.png`} className="max-h-12 pl-4"></img>
+                <img
+                alt={vehicle.type}
+                src={vehicleImages[vehicle.type as keyof typeof vehicleImages]}
+                className="max-h-12 pl-4"></img>
                 <span className="text-center text-2xl ml-4 font-bold text-ellipsis break-words overflow-hidden line-clamp-2">{projectTitle ? projectTitle : vehicle.type}</span>
             </button>
             <Popover                
@@ -72,9 +84,10 @@ const ChangeVehicle = ({ vehicle }: {vehicle: VehicleType}) => {
                             onClick={() => handleVehicleTypeChange(vehicleType)}>
                                 <ListItemButton>
                                     <ListItemIcon>
-                                    <img
-                                        src={`./img/${vehicleType}-dark.png`}
-                                        className="max-h-8"
+                                        <img
+                                        alt={vehicle.type}
+                                        src={vehicleImages[vehicleType as keyof typeof vehicleImages]}
+                                        className="max-h-8 invert"
                                         ></img>
                                     </ListItemIcon>
                                     <ListItemText primary={vehicleType} />
