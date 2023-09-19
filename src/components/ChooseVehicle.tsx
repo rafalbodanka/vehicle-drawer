@@ -40,14 +40,14 @@ const ChooseVehicle = () => {
     nodeRef={modalRef}
     >
       <div
-      className={'flex justify-center items-center w-full h-full'}
+      className={'flex justify-center mt-8 md:mt-0 md:items-center w-full h-full'}
       ref={modalRef}>
         <div>
           <p className="text-center mb-8 text-3xl text-almostWhite font-bold">
             Pick vehicle type:
           </p>
           <div
-          className={"flex gap-8 justify-center items-center"}
+          className={"flex gap-8 flex-col md:flex-row justify-center items-center"}
           >
             {vehicleTypes.map(vehicle => {
               return (

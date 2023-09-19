@@ -37,22 +37,24 @@ const StartProject = ({}) => {
       >
         <div
         ref={modalRef}
-        className={'flex w-full h-full justify-center items-center'}
+        className={'flex w-full h-full justify-center  items-center overflow-auto'}
         >
-          <div
-          className="h-48 w-48 text-almostWhite flex justify-center items-center border-almostWhite border-[3px] rounded-lg cursor-pointer hover-lift"
-          onClick={startProject}
-          >
-            <div>
-              <p className="font-bold">
-                Start new project
-              </p>
-              <div className="flex justify-center mt-4">
-                <span className="flex justify-center"><AddCircleIcon fontSize="large"/></span>
+          <div className="flex flex-col md:flex-row justify-center items-center">
+            <div
+            className="h-48 w-48 text-almostWhite flex justify-center items-center border-almostWhite border-[3px] rounded-lg cursor-pointer hover-lift"
+            onClick={startProject}
+            >
+              <div>
+                <p className="font-bold">
+                  Start new project
+                </p>
+                <div className="flex justify-center mt-4">
+                  <span className="flex justify-center"><AddCircleIcon fontSize="large"/></span>
+                </div>
               </div>
             </div>
+            <SavedProjects />
           </div>
-          <SavedProjects />
         </div>
       </CSSTransition>
       <ChooseVehicle />
