@@ -8,15 +8,15 @@ const Deleting = () => {
   const {deletingColumn, deletingRow} = useAppSelector(selectDeleting)
 
   return (
-    <div className='flex gap-8 text-xs sm:text-sm md:text-md lg:text-lg'>
+    <div className='flex gap-8 text-xs sm:text-sm md:text-md lg:text-lg items-center justify-center'>
         <button
-        className={`relative py-2 px-4 shadow-lg max-h-16 ${deletingRow ? 'bg-purple-900' : 'bg-purple-800'} rounded-lg`}
+        className={`relative py-2 px-4 shadow-lg max-h-16 ${deletingRow ? 'bg-purple-900' : 'bg-purple-800'} rounded-lg flex items-center`}
         >
             <LayersClearIcon fontSize='inherit' />
             <DeletingRow />
         </button>
         <button
-          className={`relative py-2 px-4 shadow-lg max-h-16 ${deletingColumn ? 'bg-purple-900' : 'bg-purple-800'} rounded-lg`}
+          className={`relative py-2 px-4 shadow-lg max-h-16 ${deletingColumn ? 'bg-purple-900' : 'bg-purple-800'} rounded-lg flex items-center`}
           >
             <LayersClearIcon fontSize='inherit'/>
             <DeletingColumn />

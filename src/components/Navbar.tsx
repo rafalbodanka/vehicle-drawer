@@ -15,10 +15,10 @@ const Navbar = ({ vehicle }: {vehicle: VehicleType}) => {
             <ChangeVehicle vehicle={vehicle}/>
             {viewportWidth >= 768 ?
             <div className="flex">
-                <div className="ml-8 lg:ml-24">
+                <div className="ml-8 lg:ml-24 flex items-center justify-center">
                     <SaveProject />
                 </div>
-                <div className="ml-8 lg:ml-24">
+                <div className="ml-8 lg:ml-24 flex items-center justify-center">
                     <Deleting />
                 </div>    
             </div>
