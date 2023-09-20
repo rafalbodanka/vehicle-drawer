@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
-import AddRoadIcon from '@mui/icons-material/AddRoad';
 import LayersClearIcon from '@mui/icons-material/LayersClear';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Button from "@mui/material/Button"
@@ -51,22 +49,7 @@ const ColumnEditPopover = ({ wagonIndex, columnIndex }: {wagonIndex: number; col
 		handleClose();
 	}
 
-	const handleAddCorridor = () => {
-		const maxCorridors = vehicle.wagons[wagonIndex].columns[columnIndex].sits.length
-		console.log(vehicle.wagons[wagonIndex].corridors)
-		const firstPossibleCorridor = (range: number, corridors: number[]) => {
-			for (let i=0; i <= range; i++) {
-				if (!corridors.includes(i)) return i
-				if (i === range) console.log('brak miejsca')
-			}
-		}
-		const corridorIndex = firstPossibleCorridor(maxCorridors, vehicle.wagons[wagonIndex].corridors)
-		if (corridorIndex !== undefined && corridorIndex !== null) dispatch(addCorridor({wagonIndex, corridorIndex}))
-	}
-
-	const handleAddRow = () => {
-		dispatch(addRow({wagonIndex}))
-	}
+	
 
     return (
 			<ThemeProvider theme={theme}>
@@ -89,28 +72,12 @@ const ColumnEditPopover = ({ wagonIndex, columnIndex }: {wagonIndex: number; col
 				}}
             >
 				<List>
-				<ListItem disablePadding onClick={handleAddRow}>
-					<ListItemButton>
-						<ListItemIcon>
-							<PlaylistAddIcon />
-						</ListItemIcon>
-						<ListItemText primary="Add row" />
-					</ListItemButton>
-				</ListItem>
-				<ListItem disablePadding onClick={handleAddCorridor}>
-					<ListItemButton>
-						<ListItemIcon>
-							<AddRoadIcon/>
-						</ListItemIcon>
-						<ListItemText primary="Add corridor" />
-					</ListItemButton>
-				</ListItem>
 				<ListItem disablePadding onClick={() => handleResetColumn(columnIndex)}>
 					<ListItemButton>
 						<ListItemIcon>
 							<RestartAltIcon />
 						</ListItemIcon>
-						<ListItemText primary="Reset row" />
+						<ListItemText primary="Reset column" />
 					</ListItemButton>
 				</ListItem>
 				<ListItem disablePadding onClick={() => handleDeleteColumn(columnIndex)}>

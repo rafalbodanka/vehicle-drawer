@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { addColumn, deleteColumn, selectVehicle } from "../redux/vehicle";
+import { addColumn, addCorridor, addRow, deleteColumn, selectVehicle } from "../redux/vehicle";
 import { WagonType } from "../utils/Types";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Button from "@mui/material/Button"
@@ -16,6 +16,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import AddRoadIcon from '@mui/icons-material/AddRoad';
 
 type EditWagonProps = {
     wagon: WagonType;
@@ -60,6 +62,22 @@ const EditWagon = ({ wagon, wagonIndex, setDisplayedLength }: EditWagonProps) =>
 		dispatch(deleteColumn({ wagonIndex, columnIndex }));
 	};
 
+	const handleAddCorridor = () => {
+		const maxCorridors = vehicle.wagons[wagonIndex].columns[0].sits.length
+		const firstPossibleCorridor = (range: number, corridors: number[]) => {
+			for (let i=0; i <= range; i++) {
+				if (!corridors.includes(i)) return i
+				if (i === range) console.log('brak miejsca')
+			}
+		}
+		const corridorIndex = firstPossibleCorridor(maxCorridors, vehicle.wagons[wagonIndex].corridors)
+		if (corridorIndex !== undefined && corridorIndex !== null) dispatch(addCorridor({wagonIndex, corridorIndex}))
+	}
+
+	const handleAddRow = () => {
+		dispatch(addRow({wagonIndex}))
+	}
+
     return (
         <ThemeProvider theme={theme}>
         <div className="flex justify-center absolute">
@@ -92,6 +110,22 @@ const EditWagon = ({ wagon, wagonIndex, setDisplayedLength }: EditWagonProps) =>
                             <AddIcon/>
 						</ListItemIcon>
 						<ListItemText primary="Add column" />
+					</ListItemButton>
+				</ListItem>
+				<ListItem disablePadding onClick={handleAddRow}>
+					<ListItemButton>
+						<ListItemIcon>
+							<PlaylistAddIcon />
+						</ListItemIcon>
+						<ListItemText primary="Add row" />
+					</ListItemButton>
+				</ListItem>
+				<ListItem disablePadding onClick={handleAddCorridor}>
+					<ListItemButton>
+						<ListItemIcon>
+							<AddRoadIcon/>
+						</ListItemIcon>
+						<ListItemText primary="Add corridor" />
 					</ListItemButton>
 				</ListItem>
 				<ListItem disablePadding>
