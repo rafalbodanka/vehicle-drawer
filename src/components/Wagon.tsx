@@ -19,8 +19,8 @@ const Wagon = ({ wagon, wagonIndex }: WagonProps) => {
 	return (
 		<div className="flex flex-row-reverse pl-8 relative">
 			<div className="w-4 bg-almostWhite rounded-r-2xl"></div>
-			<EditWagon wagon={wagon} wagonIndex={wagonIndex} setDisplayedLength={setDisplayedLength}/>
-			{wagon.columns.map((column, columnIndex) => (
+			{wagon && <EditWagon wagon={wagon} wagonIndex={wagonIndex} setDisplayedLength={setDisplayedLength}/>}
+			{wagon && wagon.columns.map((column, columnIndex) => (
 				<Column key={columnIndex} wagonIndex={wagonIndex} column={column} columnIndex={columnIndex}/>
 			))}
 			<div className="w-4 bg-almostWhite rounded-l-2xl"></div>

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { addColumn, addCorridor, addRow, deleteColumn, removeWagon, selectVehicle } from "../redux/vehicle";
+import { addColumn, addCorridor, addRow, deleteColumn, moveWagonLeft, moveWagonRight, removeWagon, selectVehicle } from "../redux/vehicle";
 import { WagonType } from "../utils/Types";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Button from "@mui/material/Button"
@@ -72,7 +72,6 @@ const EditWagon = ({ wagon, wagonIndex, setDisplayedLength }: EditWagonProps) =>
 		const firstPossibleCorridor = (range: number, corridors: number[]) => {
 			for (let i=0; i <= range; i++) {
 				if (!corridors.includes(i)) return i
-				if (i === range) console.log('brak miejsca')
 			}
 		}
 		const corridorIndex = firstPossibleCorridor(maxCorridors, vehicle.wagons[wagonIndex].corridors)
@@ -81,6 +80,17 @@ const EditWagon = ({ wagon, wagonIndex, setDisplayedLength }: EditWagonProps) =>
 
 	const handleAddRow = () => {
 		dispatch(addRow({wagonIndex}))
+	}
+
+	const handleMoveWagonLeft = () => {
+		if (wagonIndex === vehicle.wagons.length - 1) return
+		dispatch(moveWagonLeft({currentWagonIndex: wagonIndex}))
+		handleClose()
+	}
+	const handleMoveWagonRight = () => {
+		if (wagonIndex === 0) return
+		dispatch(moveWagonRight({currentWagonIndex: wagonIndex}))
+		handleClose()
 	}
 
     return (
@@ -109,8 +119,8 @@ const EditWagon = ({ wagon, wagonIndex, setDisplayedLength }: EditWagonProps) =>
 				}}
             >
 				<List>
-				<ListItem disablePadding>
-					<ListItemButton onClick={() => incrementWagonColumns(wagonIndex)}>
+				<ListItem disablePadding onClick={() => incrementWagonColumns(wagonIndex)}>
+					<ListItemButton>
 						<ListItemIcon>
                             <AddIcon/>
 						</ListItemIcon>
@@ -133,7 +143,7 @@ const EditWagon = ({ wagon, wagonIndex, setDisplayedLength }: EditWagonProps) =>
 						<ListItemText primary="Add corridor" />
 					</ListItemButton>
 				</ListItem>
-				<ListItem disablePadding>
+				<ListItem disablePadding onClick={handleMoveWagonLeft}>
 					<ListItemButton>
 						<ListItemIcon>
 							<KeyboardDoubleArrowLeftIcon />
@@ -141,7 +151,7 @@ const EditWagon = ({ wagon, wagonIndex, setDisplayedLength }: EditWagonProps) =>
 						<ListItemText primary="Move wagon left" />
 					</ListItemButton>
 				</ListItem>
-				<ListItem disablePadding>
+				<ListItem disablePadding onClick={handleMoveWagonRight}>
 					<ListItemButton>
 						<ListItemIcon>
 							<KeyboardDoubleArrowRightIcon />
@@ -166,28 +176,3 @@ const EditWagon = ({ wagon, wagonIndex, setDisplayedLength }: EditWagonProps) =>
 }
 
 export default EditWagon
-
-{/* <div className="absolute text-xl">
-        <span>
-            Wagon {wagonIndex}
-        </span>
-        <div>
-            <span> 
-                Length:
-            </span>
-            <span>
-                &nbsp;
-                {vehicle.wagons[wagonIndex].columns.length}
-            </span>
-        </div>
-        <div className="flex justify-end gap-4 pt-2">
-            <button
-            className="bg-purple-900 rounded-full h-6 w-6"
-            onClick={() => decrementDisplayedLength(wagonIndex)}
-            >-</button>
-            <button
-            className="bg-purple-900 rounded-full h-6 w-6"
-            onClick={() => incrementWagonColumns(wagonIndex)}
-            >+</button>
-        </div>
-    </div> */}

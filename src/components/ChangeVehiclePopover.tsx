@@ -60,7 +60,7 @@ const ChangeVehicle = ({ vehicle }: {vehicle: VehicleType}) => {
                 alt={vehicle.type}
                 src={vehicleImages[vehicle.type as keyof typeof vehicleImages]}
                 className="max-h-12 pl-4"></img>
-                <span className="text-center text-md sm:text-md md:text-lg ml-4 font-bold text-ellipsis break-words overflow-hidden line-clamp-2">{projectTitle ? projectTitle : vehicle.type}</span>
+                <span className="text-center text-lg ml-4 font-bold text-ellipsis break-words overflow-hidden line-clamp-2">{projectTitle ? projectTitle : vehicle.type}</span>
             </button>
             <Popover                
                 id={id}
