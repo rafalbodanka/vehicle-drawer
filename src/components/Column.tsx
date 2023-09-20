@@ -42,7 +42,6 @@ const Column = ({ column, columnIndex, wagonIndex }: ColumnProps) => {
 				dispatch(moveCorridor({wagonIndex, prevCorridorIndex: corridor, newCorridorIndex: corridor - 1}))
 			}
 		})
-		console.log(corridors)
 	}
 
 	return (

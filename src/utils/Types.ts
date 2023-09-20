@@ -26,6 +26,6 @@ export type SavedProjectType = {
     title: string;
     saved: boolean;
     vehicle: VehicleType;
-	savedAt: Date;
+	savedAt: string;
 }
 

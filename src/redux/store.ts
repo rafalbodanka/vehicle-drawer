@@ -3,6 +3,7 @@ import vehicleReducer from "./vehicle"
 import deletingReducer from "./deleting"
 import projectReducer from "./project"
 import savedProjectsReducer from './savedProjects'
+import viewportReducer from "./viewport"
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     deleting: deletingReducer,
     project: projectReducer,
     savedProjects: savedProjectsReducer,
+    viewport: viewportReducer,
   }
 })
 

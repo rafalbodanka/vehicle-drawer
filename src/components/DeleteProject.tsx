@@ -37,7 +37,6 @@ const DeleteProject = () => {
     const handleClose = () => setOpen(false);
 
     const handleDeleteProject = () => {
-        console.log(currentProject)
         const newProjects = projects.filter(project => {
             if (project.title !== currentProject.title)
             return project

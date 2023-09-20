@@ -54,13 +54,13 @@ const ChangeVehicle = ({ vehicle }: {vehicle: VehicleType}) => {
     }
 
     return (
-        <div className="flex items-center w-48">
+        <div className="flex items-center">
             <button className="flex items-center" onClick={handleClick}>
                 <img
                 alt={vehicle.type}
                 src={vehicleImages[vehicle.type as keyof typeof vehicleImages]}
                 className="max-h-12 pl-4"></img>
-                <span className="text-center text-2xl ml-4 font-bold text-ellipsis break-words overflow-hidden line-clamp-2">{projectTitle ? projectTitle : vehicle.type}</span>
+                <span className="text-center text-lg ml-4 font-bold text-ellipsis break-words overflow-hidden line-clamp-2">{projectTitle ? projectTitle : vehicle.type}</span>
             </button>
             <Popover                
                 id={id}

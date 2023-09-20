@@ -31,12 +31,12 @@ const SavedProjects = () => {
     }
 
     return (
-        <div className="flex flex-row-reverse">
+        <div className="flex flex-col-reverse justify-center md:flex-row-reverse">
             {savedProjects && savedProjects.map((savedProject, index) => {
                 return (
                     <div
                     key={index}
-                    className="h-48 w-48 text-almostWhite flex justify-center items-center border-almostWhite border-[3px] rounded-lg cursor-pointer ml-8 hover-lift"
+                    className="h-48 w-48 text-almostWhite flex justify-center items-center border-almostWhite border-[3px] rounded-lg cursor-pointer mt-8 md:mt-0 md:ml-8 hover-lift"
                     onClick={() => loadProject(savedProject)}
                     >
                       <div>

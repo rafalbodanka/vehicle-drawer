@@ -3,6 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from './store'
 import type { VehicleType } from "../utils/Types"
 import generateSitsArray from './helpers/generateSits'
+import { cloneDeep } from 'lodash';
 
 const initialState: VehicleType = {
   type: '',
@@ -158,9 +159,64 @@ export const vehicleSlice = createSlice({
     const newCorridors = new Set(state.wagons[wagonIndex].corridors)
     state.wagons[wagonIndex].corridors = Array.from(newCorridors);
   },
+  removeWagon: (state, action: PayloadAction<{
+    wagonIndex: number;
+  }>) => {
+    const {wagonIndex} = action.payload
+    state.wagons = state.wagons.filter((wagon, index) => {
+      if (wagonIndex !== index) {
+        return wagon
+      }
+    })
+  },
+  moveWagonRight: (state, action: PayloadAction<{
+    currentWagonIndex: number;
+  }>) => {
+    const {currentWagonIndex} = action.payload
+    const updatedWagons = cloneDeep(state.wagons);
+
+    [updatedWagons[currentWagonIndex], updatedWagons[currentWagonIndex - 1]] = [
+      updatedWagons[currentWagonIndex - 1],
+      updatedWagons[currentWagonIndex],
+    ];
+
+    state.wagons = updatedWagons;  
+  },
+  moveWagonLeft: (state, action: PayloadAction<{
+    currentWagonIndex: number;
+  }>) => {
+    const {currentWagonIndex} = action.payload
+    const updatedWagons = cloneDeep(state.wagons);
+
+    [updatedWagons[currentWagonIndex], updatedWagons[currentWagonIndex + 1]] = [
+      updatedWagons[currentWagonIndex + 1],
+      updatedWagons[currentWagonIndex],
+    ];
+
+    state.wagons = updatedWagons;  
+  },
   },
 })
 
-export const { setVehicle, setVehicleType, addColumn, deleteColumn, addWagon, moveCorridor, setSitType, resetColumn, addCorridor, switchSitDirection, addRow, deleteRow, deleteCorridor, removeCorridorDuplicates, resetVehicle } = vehicleSlice.actions
+export const {
+  setVehicle, 
+  setVehicleType,
+  addColumn,
+  deleteColumn,
+  addWagon,
+  moveCorridor,
+  setSitType,
+  resetColumn,
+  addCorridor,
+  switchSitDirection,
+  addRow, 
+  deleteRow,
+  deleteCorridor,
+  removeCorridorDuplicates,
+  resetVehicle,
+  removeWagon,
+  moveWagonRight,
+  moveWagonLeft,
+} = vehicleSlice.actions
 export const selectVehicle = (state: RootState) => state.vehicle
 export default vehicleSlice.reducer
