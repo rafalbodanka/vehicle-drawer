@@ -50,7 +50,6 @@ const SaveProject = () => {
     
     const handleOpenSaveProjectModal = () => {
         setOpen(true);
-        setProjectTitle("")
     }
 
     const savedProjects = useAppSelector(selectSavedProjects)
@@ -72,7 +71,7 @@ const SaveProject = () => {
             title: projectTitle ? projectTitle : "Untitled",
             saved: true,
             vehicle: vehicle,
-            savedAt: new Date(),
+            savedAt: new Date().toISOString(),
         }
         const newSavedProjects = [...clearedProjects, newProject]
         localStorage.setItem('savedProjects', JSON.stringify(newSavedProjects))

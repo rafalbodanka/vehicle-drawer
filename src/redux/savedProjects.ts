@@ -7,7 +7,7 @@ type SavedProjectType = {
     title: string;
     saved: boolean;
     vehicle: VehicleType;
-    savedAt: Date;
+    savedAt: string;
 }
 
 const initialState: SavedProjectType[] = []
