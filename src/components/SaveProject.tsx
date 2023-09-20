@@ -85,7 +85,7 @@ const SaveProject = () => {
             {viewportWidth >= 768 ? 
                 <div className='flex cursor-pointer' onClick={handleOpenSaveProjectModal}>
                     <button
-                        className="py-2 px-4 shadow-lg max-h-16 text-xs sm:text-sm md:text-md lg:text-lg bg-purple-800 rounded-lg active:bg-purple-900"
+                        className="py-3 px-4 bg-purple-800 rounded-lg active:bg-purple-900"
                         >
                         <SaveIcon fontSize="inherit"/>
                         <span className='ml-2'>Save</span>
