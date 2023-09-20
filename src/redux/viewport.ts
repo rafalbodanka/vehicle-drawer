@@ -4,8 +4,8 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from './store'
 
 const initialState = {
-  width: window.innerWidth, // Initialize with the current viewport width
-  height: window.innerHeight, // Initialize with the current viewport width
+  width: window.innerWidth,
+  height: window.innerHeight,
 };
 
 const viewportSlice = createSlice({
