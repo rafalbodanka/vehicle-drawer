@@ -37,7 +37,7 @@ const StartProject = ({}) => {
       >
         <div
         ref={modalRef}
-        className={'flex w-full h-full justify-center  items-center overflow-auto'}
+        className={'flex p-4 overflow-auto'}
         >
           <div className="flex flex-col md:flex-row justify-center items-center">
             <div

@@ -1,9 +1,7 @@
-import { useEffect } from "react"
 import StartProject from "./components/StartProject";
 import Project from "./components/Project";
-import { useAppDispatch, useAppSelector } from "./redux/hooks";
+import { useAppSelector } from "./redux/hooks";
 import { selectProject } from "./redux/project";
-import { setViewportWidth } from "./redux/viewport";
 import useWindowWidth from "./hooks/useWindowWidth";
 
 const App = () => {
@@ -11,7 +9,7 @@ const App = () => {
   useWindowWidth()
 
   return (
-    <div className="w-screen h-screen">
+    <div className="min-w-screen min-h-screen flex justify-center overflow-hidden items-center">
       {isVehicleSet ?
         <Project />
         :

@@ -40,29 +40,29 @@ const Vehicle = ({ vehicle }: VehicleProps) => {
 	}
 
 	return (
-		<div className="flex flex-row-reverse items-center">
-			<div className="flex items-center flex-shrink-0">
-				<img
-				alt={vehicle.type}
-                src={vehicleFrontImages[vehicle.type as keyof typeof vehicleImages]}
-				className="pl-8"></img>
+			<div className="flex flex-row-reverse items-center overflow-auto px-8 py-2 ">
+				<div className="flex items-center flex-shrink-0">
+					<img
+					alt={vehicle.type}
+					src={vehicleFrontImages[vehicle.type as keyof typeof vehicleImages]}
+					className="pl-8 max-h-80 md:max-h-96 lg:max-h-min"></img>
+				</div>
+				{vehicle.wagons.map((wagon, wagonIndex) => (
+					<Wagon key={wagonIndex} wagon={wagon} wagonIndex={wagonIndex} />
+				))}
+				<div className="flex justify-center items-center">
+					<div 
+					className="text-2xl bg-green-400 rounded-full h-8 w-8 text-center font-bold cursor-pointer"
+					onClick={handleAddWagon}
+					>+</div>
+				</div>
+				<div className="flex items-center flex-shrink-0">
+					<img
+					alt={vehicle.type}
+					src={vehicleBackImages[vehicle.type as keyof typeof vehicleImages]}
+					className="pr-8 max-h-80 md:max-h-96 lg:max-h-min"></img>
+				</div>
 			</div>
-			{vehicle.wagons.map((wagon, wagonIndex) => (
-				<Wagon key={wagonIndex} wagon={wagon} wagonIndex={wagonIndex} />
-			))}
-			<div className="flex justify-center items-center">
-				<div 
-				className="text-2xl bg-green-400 rounded-full h-8 w-8 text-center font-bold cursor-pointer"
-				onClick={handleAddWagon}
-				>+</div>
-			</div>
-			<div className="flex items-center flex-shrink-0">
-				<img
-				alt={vehicle.type}
-                src={vehicleBackImages[vehicle.type as keyof typeof vehicleImages]}
-				className="pr-8"></img>
-			</div>
-		</div>
 	);
 }
 

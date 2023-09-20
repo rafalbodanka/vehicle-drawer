@@ -17,7 +17,7 @@ const Project = ({}) => {
 	return (
 		<>
 			{isProjectVisible &&
-				<div className="flex justify-center items-center h-full w-full text-almostWhite flex-row-reverse overflow-auto">
+				<div className="flex items-center text-almostWhite flex-row-reverse min-w-0">
 					<Navbar vehicle={vehicle}/>
 					<Vehicle vehicle={vehicle}/>
 				</div>
