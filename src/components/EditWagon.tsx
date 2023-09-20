@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { addColumn, addCorridor, addRow, deleteColumn, selectVehicle } from "../redux/vehicle";
+import { addColumn, addCorridor, addRow, deleteColumn, removeWagon, selectVehicle } from "../redux/vehicle";
 import { WagonType } from "../utils/Types";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Button from "@mui/material/Button"
@@ -61,6 +61,11 @@ const EditWagon = ({ wagon, wagonIndex, setDisplayedLength }: EditWagonProps) =>
 		setDisplayedLength(prevLength => prevLength - 1)
 		dispatch(deleteColumn({ wagonIndex, columnIndex }));
 	};
+
+	const handleDeleteWagon = () => {
+		dispatch(removeWagon({wagonIndex}))
+		handleClose()
+	}
 
 	const handleAddCorridor = () => {
 		const maxCorridors = vehicle.wagons[wagonIndex].columns[0].sits.length
@@ -144,7 +149,7 @@ const EditWagon = ({ wagon, wagonIndex, setDisplayedLength }: EditWagonProps) =>
 						<ListItemText primary="Move wagon right" />
 					</ListItemButton>
 				</ListItem>
-				<ListItem disablePadding>
+				<ListItem disablePadding onClick={handleDeleteWagon}>
 					<ListItemButton>
 						<ListItemIcon>
 							<DeleteIcon />

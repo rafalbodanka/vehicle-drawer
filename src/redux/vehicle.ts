@@ -158,9 +158,36 @@ export const vehicleSlice = createSlice({
     const newCorridors = new Set(state.wagons[wagonIndex].corridors)
     state.wagons[wagonIndex].corridors = Array.from(newCorridors);
   },
+  removeWagon: (state, action: PayloadAction<{
+    wagonIndex: number;
+  }>) => {
+    const {wagonIndex} = action.payload
+    state.wagons = state.wagons.filter((wagon, index) => {
+      if (wagonIndex !== index) {
+        return wagon
+      }
+    })
+  },
   },
 })
 
-export const { setVehicle, setVehicleType, addColumn, deleteColumn, addWagon, moveCorridor, setSitType, resetColumn, addCorridor, switchSitDirection, addRow, deleteRow, deleteCorridor, removeCorridorDuplicates, resetVehicle } = vehicleSlice.actions
+export const {
+  setVehicle, 
+  setVehicleType,
+  addColumn,
+  deleteColumn,
+  addWagon,
+  moveCorridor,
+  setSitType,
+  resetColumn,
+  addCorridor,
+  switchSitDirection,
+  addRow, 
+  deleteRow,
+  deleteCorridor,
+  removeCorridorDuplicates,
+  resetVehicle,
+  removeWagon,
+} = vehicleSlice.actions
 export const selectVehicle = (state: RootState) => state.vehicle
 export default vehicleSlice.reducer
