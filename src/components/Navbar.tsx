@@ -1,5 +1,5 @@
 import { useAppSelector } from "../redux/hooks"
-import { selectViewportWidth } from "../redux/viewport"
+import { selectViewport } from "../redux/viewport"
 import { VehicleType } from "../utils/Types"
 import ChangeVehicle from "./ChangeVehiclePopover"
 import Deleting from "./Deleting"
@@ -8,7 +8,7 @@ import NavbarMore from "./NavbarMore"
 
 const Navbar = ({ vehicle }: {vehicle: VehicleType}) => {
 
-    const viewportWidth = useAppSelector(selectViewportWidth)
+    const viewportWidth = useAppSelector(selectViewport).width
 
     return (
         <div className="fixed top-0 left-0 h-16 bg-purple-900 w-full flex items-center z-10 justify-between md:justify-normal">

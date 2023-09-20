@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useAppDispatch } from "../redux/hooks";
-import { setViewportWidth } from "../redux/viewport";
+import { setViewport } from "../redux/viewport";
 
 const getWindowDimensions = () => {
     const { innerWidth: width, innerHeight: height } = window;
@@ -15,7 +15,7 @@ const useWindowWidth = () => {
 
     useEffect(() => {
       const handleResize = () => {
-        dispatch(setViewportWidth(getWindowDimensions().width));
+        dispatch(setViewport(getWindowDimensions()));
       }
   
       window.addEventListener('resize', handleResize);

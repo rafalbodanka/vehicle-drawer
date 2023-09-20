@@ -5,18 +5,20 @@ import type { RootState } from './store'
 
 const initialState = {
   width: window.innerWidth, // Initialize with the current viewport width
+  height: window.innerHeight, // Initialize with the current viewport width
 };
 
 const viewportSlice = createSlice({
   name: 'viewport',
   initialState,
   reducers: {
-    setViewportWidth: (state, action: PayloadAction<number>) => {
-      state.width = action.payload;
+    setViewport: (state, action: PayloadAction<{width: number; height: number}>) => {
+      state.width = action.payload.width;
+      state.height = action.payload.height;
     },
   },
 });
 
-export const { setViewportWidth } = viewportSlice.actions;
-export const selectViewportWidth = (state: RootState) => state.viewport.width
+export const { setViewport } = viewportSlice.actions;
+export const selectViewport = (state: RootState) => state.viewport
 export default viewportSlice.reducer;

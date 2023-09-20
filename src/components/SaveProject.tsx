@@ -5,12 +5,12 @@ import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { Box, Modal, TextField, ThemeProvider, Typography, createTheme } from "@mui/material";
 import { selectSavedProjects, setSavedProjects } from "../redux/savedProjects";
 import { selectProject, setTitle } from "../redux/project";
-import { selectViewportWidth } from "../redux/viewport";
+import { selectViewport } from "../redux/viewport";
 import ListItemText from "@mui/material/ListItemText"
 
 const SaveProject = () => {
 
-    const viewportWidth = useAppSelector(selectViewportWidth)
+    const viewportWidth = useAppSelector(selectViewport).width
 
     const vehicle = useAppSelector(selectVehicle)
     const project = useAppSelector(selectProject)
