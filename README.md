@@ -2,6 +2,8 @@
 
 This is a vehicle drawing app. Create your fleet (and coming soon -  sell tickets for your commune system).
 
+You can access the live deployment of this project [here](https://rafalbodanka.github.io/vehicle-drawer/).
+
 ## Table of Contents
 
 - [Installation](#installation)
@@ -32,6 +34,8 @@ Manage your projects.
 
 ![Start view](./assets/start-view.png)
 
+![Start view mobile](./assets/start-view-mobile.png)
+
 Choose vehicle.
 
 ![Choose vehicle view](./assets/pick-vehicle-view.png)
@@ -50,6 +54,10 @@ Use delete row and columns modes to delete them.
 
 ![Delete column view](./assets/delete-column-view.png)
 
+Edit wagons.
+
+![Edit wagon view](./assets/edit-wagon-view.png)
+
 Edit columns.
 
 ![Edit column view](./assets/edit-column-view.png)
@@ -57,6 +65,8 @@ Edit columns.
 Navigate the project.
 
 ![Project navbar view](./assets/navbar-open-view.png)
+
+![Project navbar view mobile](./assets/navbar-open-view-mobile.png)
 
 Save your project (saved in local storage).
 
